@@ -19,7 +19,7 @@ export const AuthCard = ({
 } : AuthCardProps) => {
 
     return (
-        <Card>
+        <Card className="max-w-screen-md mx-auto">
             <CardHeader>
                 <CardTitle>{cardTitle}</CardTitle>
             </CardHeader>

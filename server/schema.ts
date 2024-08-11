@@ -1,7 +1,10 @@
-import { integer, pgTable, primaryKey, text, timestamp } from "drizzle-orm/pg-core";
+import { boolean, integer, pgEnum, pgTable, primaryKey, text, timestamp } from "drizzle-orm/pg-core";
 import type { AdapterAccount } from "next-auth/adapters"
+import {createId} from '@paralleldrive/cuid2'
 
 
+
+export const RoleEnum = pgEnum('roles' , ['user' , 'admin'])
 
 export const users = pgTable("user", {
     id: text("id")
@@ -11,6 +14,8 @@ export const users = pgTable("user", {
     email: text("email").unique(),
     emailVerified: timestamp("emailVerified", { mode: "date" }),
     image: text("image"),
+    twoFactorEnabled : boolean('twoFactorEnabled').default(false),
+    role : RoleEnum('roles').default('user'),
   })
    
   export const accounts = pgTable(
@@ -35,6 +40,24 @@ export const users = pgTable("user", {
     (account) => ({
       compoundKey: primaryKey({
         columns: [account.provider, account.providerAccountId],
+      }),
+    })
+  )
+  export const emailTokens = pgTable(
+    "email_tokens",
+    {
+      // here, we used createId() as a default function to create us id
+      // because if it don't , we have to create id ourselves in schema and that's a nightmare!
+      id: text("id").notNull().$defaultFn(()=> createId()),
+      token: text("token").notNull(),
+      expires: timestamp("expires", { mode: "date" }).notNull(),
+      email : text('email').notNull()
+    },
+    // this indexing is good for querying and organizing the database
+    // finds your unique request faster based on merging both token and id
+    (verificationToken) => ({
+      compositePk: primaryKey({
+        columns: [verificationToken.id, verificationToken.token],
       }),
     })
   )

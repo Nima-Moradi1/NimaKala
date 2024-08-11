@@ -21,7 +21,7 @@ export const AuthCard = ({
     return (
         <Card className="max-w-screen-md mx-auto">
             <CardHeader>
-                <CardTitle>{cardTitle}</CardTitle>
+                <CardTitle className="text-xl text-center">{cardTitle}</CardTitle>
             </CardHeader>
                 <CardContent>
                     {children}

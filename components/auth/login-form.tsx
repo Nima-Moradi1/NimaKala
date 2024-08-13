@@ -10,13 +10,16 @@ import * as z from 'zod'
 import { Input } from '../ui/input'
 import { Button } from '../ui/button'
 import Link from 'next/link'
-import { emailSignin } from '@/server/actions/email-signin'
+import { emailSignIn } from '@/server/actions/email-signin'
 import {useAction} from 'next-safe-action/hooks'
 import { cn } from '@/lib/utils'
+import { FormSuccess } from './form-success'
+import { FormError } from './form-error'
 
 const Login = () => {
 
 const [error , setError] = React.useState('')
+const [success , setSuccess] = React.useState('')
 
 const form = useForm<z.infer<typeof LoginSchema>>({
   resolver : zodResolver(LoginSchema) , 
@@ -26,9 +29,10 @@ const form = useForm<z.infer<typeof LoginSchema>>({
   }
 })
 
-const {status , execute} = useAction(emailSignin , {
+const {status , execute} = useAction(emailSignIn , {
   onSuccess(data) {
-    console.log(data)
+    if(data?.error) setError(data.error)
+    if(data?.success) setSuccess(data.success)
   }
 })
 
@@ -76,6 +80,8 @@ const onSubmit = (values : z.infer<typeof LoginSchema>) => {
             </FormItem>
     )}
   />
+  <FormSuccess message={success}/>
+  <FormError message={error}/>
   <Button size={'sm'} variant={'link'} asChild>
     <Link href='/auth/reset-password'>Forgot your password ?</Link>
   </Button>

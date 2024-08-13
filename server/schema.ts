@@ -62,3 +62,41 @@ export const users = pgTable("user", {
       }),
     })
   )
+
+  export const passwordResetTokens = pgTable(
+    "password_reset_tokens",
+    {
+      // here, we used createId() as a default function to create us id
+      // because if it don't , we have to create id ourselves in schema and that's a nightmare!
+      id: text("id").notNull().$defaultFn(()=> createId()),
+      token: text("token").notNull(),
+      expires: timestamp("expires", { mode: "date" }).notNull(),
+      email : text('email').notNull()
+    },
+    // this indexing is good for querying and organizing the database
+    // finds your unique request faster based on merging both token and id
+    (verificationToken) => ({
+      compositePk: primaryKey({
+        columns: [verificationToken.id, verificationToken.token],
+      }),
+    })
+  )
+
+  export const twoFactorTokens = pgTable(
+    "two-factor-tokens",
+    {
+      // here, we used createId() as a default function to create us id
+      // because if it don't , we have to create id ourselves in schema and that's a nightmare!
+      id: text("id").notNull().$defaultFn(()=> createId()),
+      token: text("token").notNull(),
+      expires: timestamp("expires", { mode: "date" }).notNull(),
+      email : text('email').notNull()
+    },
+    // this indexing is good for querying and organizing the database
+    // finds your unique request faster based on merging both token and id
+    (verificationToken) => ({
+      compositePk: primaryKey({
+        columns: [verificationToken.id, verificationToken.token],
+      }),
+    })
+  )

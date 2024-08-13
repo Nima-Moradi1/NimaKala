@@ -1,0 +1,1 @@
+ALTER TABLE "email_tokens" ADD CONSTRAINT "email_tokens_id_unique" UNIQUE("id");

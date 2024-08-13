@@ -14,10 +14,13 @@ import {useAction} from 'next-safe-action/hooks'
 import { cn } from '@/lib/utils'
 import { RegisterSchema } from '@/types/register-schema'
 import { emailRegister } from '@/server/actions/email-register'
+import { FormSuccess } from './form-success'
+import { FormError } from './form-error'
 
 const RegisterForm = () => {
 
 const [error , setError] = React.useState('')
+const [success , setSuccess] = React.useState('')
 
 const form = useForm<z.infer<typeof RegisterSchema>>({
   resolver : zodResolver(RegisterSchema) , 
@@ -33,9 +36,8 @@ const onSubmit = (values : z.infer<typeof RegisterSchema>) => {
 }
 const {execute , status} = useAction(emailRegister , {
   onSuccess(data) {
-    if(data.success) {
-      console.log(data.success)
-    }
+    if(data.error) setError(data.error)
+    if(data.success) setSuccess(data.success)
   }
 })
 
@@ -92,10 +94,12 @@ const {execute , status} = useAction(emailRegister , {
             </FormItem>
     )}
   />
-  <Button size={'sm'} variant={'link'} asChild>
-    <Link href='/auth/reset-password'>Forgot your password ?</Link>
-  </Button>
-              </div>
+             <FormSuccess message={success}/>
+             <FormError message={error}/>
+          <Button size={'sm'} variant={'link'} asChild>
+             <Link href='/auth/reset-password'>Forgot your password ?</Link>
+          </Button>
+           </div>
                   <Button 
                   type='submit' 
                   className={cn('w-full my-2 ' , status === 'executing' ? 'animate-pulse' : "")}>

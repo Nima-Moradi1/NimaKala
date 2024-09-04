@@ -3,6 +3,16 @@
 @tailwind utilities;
 
 
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+    to bottom , 
+    transparent ,
+    rgb(var(--background-end-rgb))
+  )
+  rgb(var(--background-start-rgb))
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -60,12 +70,8 @@
   }
 }
 
-
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
   }
 }

@@ -19,7 +19,7 @@ app.interceptors.response.use(
     //401 >> unauthorized access we got from logging the error >> it means we have refresh-token but not an access-token
     //destructured from error logging in console (server gives us this config)
     const originalConfig = err.config
-    if(err.response.status === 401 && !originalConfig._retry) {
+    if(err?.response?.status === 401 && !originalConfig?._retry) {
     //we only want this to run ONCE! so, only run this when originalCongig._retry is falsy value (or doesn't exist)
         originalConfig._retry = true
         try {

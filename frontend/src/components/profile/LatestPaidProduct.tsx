@@ -6,7 +6,7 @@ import ErrorMsg from "../ui/ErrorMsg";
 const LatestPaidProduct = ({lastPayment}) => {
 const latestPaidProducts = lastPayment?.cart?.productDetail?.map((product)=>{
     return product
-})
+}) || null;
 
 if(!lastPayment) return <ErrorMsg msg={'شما هیچ ثبت سفارشی در سایت نداشته اید'}/>
 return (
@@ -21,12 +21,12 @@ return (
             </Table.Header>
             <Table.Body>
                 <Table.Row>
-                    <td>{toPersianNumbersWithComma(lastPayment.amount)} تومان</td>
-                    <td>{toPersianDigits(lastPayment.invoiceNumber)}</td>
-                    <td>{toLocalDateShort(lastPayment.createdAt)}</td>
+                    <td>{toPersianNumbersWithComma(lastPayment?.amount)} تومان</td>
+                    <td>{toPersianDigits(lastPayment?.invoiceNumber)}</td>
+                    <td>{toLocalDateShort(lastPayment?.createdAt)}</td>
                     <td><div>
-                        <span className={`w-12 rounded-full p-2 text-white ${lastPayment.status === "COMPLETED" ? "bg-green-600" : "bg-error"}`}>
-                {lastPayment.status === "COMPLETED" ? "موفق" : "ناموفق"}
+                        <span className={`w-12 rounded-full p-2 text-white ${lastPayment?.status === "COMPLETED" ? "bg-green-600" : "bg-error"}`}>
+                {lastPayment?.status === "COMPLETED" ? "موفق" : "ناموفق"}
                         </span>
                     </div>
                         </td>
@@ -47,18 +47,18 @@ return (
             <Table.Body>
                 {latestPaidProducts?.map((product, index:number)=> {
                     return (
-                        <Table.Row key={product._id}>
+                        <Table.Row key={product?._id}>
                         <td>{toPersianDigits(index + 1)}</td>
-                        <td>{product.title}</td>
-                        <td>{toPersianNumbersWithComma(product.price)} تومان</td>
+                        <td>{product?.title}</td>
+                        <td>{toPersianNumbersWithComma(product?.price)} تومان</td>
                         <td>
                             <div className="border w-10 mx-auto p-1.5 text-green-700 text-center rounded-full border-green-500 flex items-center justify-center"
                             > <span>
-                            {toPersianDigits(product.discount)} ٪
+                            {toPersianDigits(product?.discount)} ٪
                             </span></div>
                            
                         </td>
-                        <td>{toPersianNumbersWithComma(product.offPrice)} تومان</td>
+                        <td>{toPersianNumbersWithComma(product?.offPrice)} تومان</td>
                     </Table.Row>
                     )
                 })}

@@ -44,9 +44,12 @@ const AddOrUpdateCouponForm = ({products , couponToUpdate}:{products:ProductsPro
 
 //this part is for updating the coupon form based on whether we have an id(Which means we're in update page) or not(we're in add page)
     const isCouponUpdating = Boolean(couponToUpdate?._id)
-    //@ts-expect-error: couponToUpdate might be undefined
-    const {_id : couponId, type : updatingCouponType,expireDate : updatingCouponExpireDate,productIds:UpdatingProductIds} = couponToUpdate
-
+    const { 
+        _id: couponId = "", 
+        type: updatingCouponType = "", 
+        expireDate: updatingCouponExpireDate = "", 
+        productIds: UpdatingProductIds = [] 
+      } = couponToUpdate || {};
 
     const router = useRouter()
     const [ProductOptions,setProductOptions] = useState(UpdatingProductIds || [])
@@ -78,7 +81,7 @@ const AddOrUpdateCouponForm = ({products , couponToUpdate}:{products:ProductsPro
     }, [couponToUpdate, setValue]);
 
     const handleDateChange = (date:DateObject) => {
-        setExpireDate(date)
+        setExpireDate(date.toDate())
         setValue('expireDate',dateServerToSend)
     }
 
@@ -123,8 +126,8 @@ const AddOrUpdateCouponForm = ({products , couponToUpdate}:{products:ProductsPro
                 label='درصد'
                 value='percent'
                 onChange={(e) => {
-                    setValue('type', e.target.value);
-                    setType(e.target.value);
+                    setValue('type', e?.target?.value);
+                    setType(e?.target?.value);
                 }}                checked={type === 'percent'}/>
                  <RadioInput {...register('type')}
                 id='fixedProduct-type'
@@ -154,11 +157,11 @@ const AddOrUpdateCouponForm = ({products , couponToUpdate}:{products:ProductsPro
             value={(option)=> option._id}
             errors={errors}
             onChange={(selectedOptions) => {
-                setProductOptions(selectedOptions.map(option => option._id))
-                setValue('productIds', selectedOptions.map(option => option._id));
+                setProductOptions(selectedOptions.map(option => option?._id || null))
+                setValue('productIds', selectedOptions.map(option => option?._id || null));
             }}
             />
-            <Button type='submit' disabled={isAdding || isUpdating || Object.keys(errors).length > 0} className='md:col-span-2'>
+            <Button type='submit' disabled={isAdding || isUpdating || Object.keys(errors)?.length > 0} className='md:col-span-2'>
                 {isAdding || isUpdating ? <SpinnerMini /> : couponToUpdate ? 'بروزرسانی کد تخفیف' : 'افزودن کد تخفیف'}
             </Button>
         </form>

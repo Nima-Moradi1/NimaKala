@@ -7,8 +7,8 @@ import ErrorMsg from '../ui/ErrorMsg'
 
 const UserPaymentsTable = ({payments}) => {
 
-    
-    if(payments.length <= 0) return <ErrorMsg msg={'شما هیچ پرداختی تا به الان انجام نداده اید'}/>
+    if(!payments) return null ;
+    if(payments?.length <= 0) return <ErrorMsg msg={'شما هیچ پرداختی تا به الان انجام نداده اید'}/>
   return (
     <div>
          <Table className='table'>
@@ -21,23 +21,23 @@ const UserPaymentsTable = ({payments}) => {
                 <th>وضعیت پرداخت</th>
             </Table.Header>
             <Table.Body>
-                {payments.map((payment, index:number)=> (
-                    <Table.Row key={payment._id}>
+                {payments?.map((payment, index:number)=> (
+                    <Table.Row key={payment?._id}>
                         <td>{toPersianDigits(index + 1)}</td>
-                        <td>{toPersianDigits(payment.invoiceNumber)}</td>
-                        <td>{payment.cart?.productDetail?.map((pd)=> {
+                        <td>{toPersianDigits(payment?.invoiceNumber)}</td>
+                        <td>{payment?.cart?.productDetail?.map((pd)=> {
                             return (
-                                <div key={pd._id} className='mb-2'>
-                                    <Link href={`/profile/payments/product/${pd.slug}`}
+                                <div key={pd?._id} className='mb-2'>
+                                    <Link href={`/profile/payments/product/${pd?.slug}`}
                                     className='hover:underline'>
                                     {pd.title}
                                     </Link>
                                 </div>
                             )
                         })}</td>
-                        <td>{toPersianNumbersWithComma(payment.amount)}</td>
-                        <td>{toLocalDateShort(payment.createdAt)}</td>
-                        <td>{payment.status === 'COMPLETED' ? 
+                        <td>{toPersianNumbersWithComma(payment?.amount)}</td>
+                        <td>{toLocalDateShort(payment?.createdAt)}</td>
+                        <td>{payment?.status === 'COMPLETED' ? 
                             <><span 
                     className='text-white bg-green-600 p-2 rounded-xl'
                             >موفق</span></> : 

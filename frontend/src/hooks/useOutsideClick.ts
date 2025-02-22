@@ -1,3 +1,4 @@
+'use client'
 import { useEffect, useRef } from "react";
 
 const useOutsideClick = (handler : ()=> void , listenCapturing = true) => {
@@ -9,10 +10,10 @@ useEffect(() => {
             handler()
         }
     }
-    document.addEventListener('click' , handleClick , listenCapturing)
+    document?.addEventListener('click' , handleClick , listenCapturing)
     //cleanup function
     return () => {
-        document.removeEventListener('click' , handleClick , listenCapturing)
+        document?.removeEventListener('click' , handleClick , listenCapturing)
     }
 }, [handler , listenCapturing])
 

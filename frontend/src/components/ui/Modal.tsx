@@ -13,9 +13,10 @@ interface ModalProps {
 }
 
 function Modal({ open, onClose, title, children, description = "" }:ModalProps) {
+  
     //? when modal is open, we want to close it when we click outside of it the reference (outside the Modal) , not just the xMark button
   const ref = useOutsideClick(onClose);
-
+  if (typeof window === "undefined") return null;
   return (
     open &&
     //? createPortal defines where the modal should be rendered (which here is the body) why ? because we want the modal to be on top of everything
@@ -48,7 +49,7 @@ function Modal({ open, onClose, title, children, description = "" }:ModalProps) 
           {children}
         </div>
       </div>,
-      document.body
+      document?.body || null
     )
   );
 }

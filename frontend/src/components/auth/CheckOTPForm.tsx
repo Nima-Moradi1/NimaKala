@@ -16,7 +16,7 @@ const CheckOTPForm = ({onSubmit , otp , setOtp , loading , moveBack , time , res
 
     return (
         <>
-        <div className="flex flex-col items-center gap-y-10">
+        <div className="flex flex-col items-center gap-y-10 m-3">
         <ButtonIcon className="ml-80 md:ml-96 border-none w-1/4 hover:bg-inherit" variant="outline"
         onClick={moveBack}>
                 <ArrowRightIcon className="size-7"/>

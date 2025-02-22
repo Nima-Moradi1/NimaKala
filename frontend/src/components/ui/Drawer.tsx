@@ -4,6 +4,7 @@
 import { createPortal } from "react-dom"
 
 const Drawer = ({open , onClose , children} : {open:boolean , onClose : any , children : React.ReactNode}) => {
+    if (typeof window === "undefined") return null;
     return createPortal(
         <>
         {/* since we're blocking the background main page, we split the next div outside this div to give it animations */}
@@ -27,7 +28,7 @@ const Drawer = ({open , onClose , children} : {open:boolean , onClose : any , ch
             </div>
         </div>
         </> , 
-        document.body
+        document?.body || null
     )
 }
 

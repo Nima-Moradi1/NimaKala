@@ -17,7 +17,7 @@ const SendOTPForm = ({onSubmit , isSendingOTP}) => {
     
   
 return (
-    <div className="flex flex-col items-center justify-center xl:max-w-screen-xl">
+    <div className="flex flex-col items-center justify-center xl:max-w-screen-xl m-3">
     <form className="form"
     onSubmit={handleSubmit(onSubmit)}>
         <h2 className="h2">ورود به حساب کاربری</h2>

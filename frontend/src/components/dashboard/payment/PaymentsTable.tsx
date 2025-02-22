@@ -37,7 +37,7 @@ console.log(payments);
                 <td>{truncateText(payment?.user?.name , 20)}</td>
                 <td>{toPersianDigits(payment?.user?.phoneNumber)}</td>
                 <td>{toPersianNumbersWithComma(payment?.amount)}</td>
-                <td>{payment.status === "COMPLETED" ? 
+                <td>{payment?.status === "COMPLETED" ? 
                    <div className='w-12 mx-auto bg-green-600 text-white flex items-center justify-center p-1 rounded-xl'> 
                     <span>موفق</span></div>
                 : 

@@ -94,7 +94,7 @@ npm run build && npm start
 ✅ Full **Next.js** & **TypeScript** support  
 ✅ **Fully responsive** design with TailwindCSS  
 ✅ **React Query** for data fetching & caching  
-✅ **JWT-based authentication & OTP login**  
+✅ **JWT-based (httpOnly Cookies) authentication & OTP login**  
 ✅ **Nested routes**, **pagination**, **sorting & filtering**  
 ✅ **Admin panel** for site owners  
 ✅ **RESTful API** with Express & MongoDB  
@@ -122,7 +122,7 @@ Feel free to contribute! 🚀
 
 ## 📬 Contact
 For any questions or collaborations, reach out at:
-📧 **your.mnima8100@gmail.com**  
+📧 **mnima8100@gmail.com**  
 GitHub: [Nima-Moradi1](https://github.com/Nima-Moradi1)
 
 ---

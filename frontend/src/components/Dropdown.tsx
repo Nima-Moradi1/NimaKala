@@ -7,6 +7,7 @@ import { toPersianDigits } from '@/utils/NumberFormatter'
 import { logoutApi } from '@/services/authServices'
 import toast from 'react-hot-toast'
 import Link from 'next/link'
+import { useTheme } from 'next-themes'
 
 const Dropdown = ({user}) => {
 
@@ -20,17 +21,18 @@ const Dropdown = ({user}) => {
     }
   }
   const role = user?.role ;
+  const {theme} = useTheme()
 
   if(!user) return null
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild className='rounded-2xl'>
         <Button variant="outline">
-            <UserIcon className='size-5' stroke='black'/>
-            <ChevronDownIcon className='size-3' stroke='black'/>
+            <UserIcon className='size-4' stroke={theme === "light" ? "black" : "white"}/>
+            <ChevronDownIcon className='size-2' stroke={theme === "light" ? "black" : "white"}/>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="flex flex-col items-end w-56 bg-white/50 backdrop-blur-lg md:ml-10 ml-2 mt-1 rounded-xl" >
+      <DropdownMenuContent className="flex flex-col items-end w-56 backdrop-blur-lg md:ml-10 ml-2 mt-1 rounded-xl" >
         <DropdownMenuLabel>
           <div className='flex items-center  py-2 gap-3 border-b w-full'>
             <div className='flex flex-col items-end'>

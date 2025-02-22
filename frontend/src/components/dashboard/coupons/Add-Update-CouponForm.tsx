@@ -15,6 +15,7 @@ import persian from 'react-date-object/calendars/persian'
 import persian_fa from 'react-date-object/locales/persian_fa'
 import { useRouter } from 'next/navigation'
 import { useUpdateCoupon } from '@/hooks/react-query-hooks/coupons/useUpdateCoupon'
+import { useTheme } from 'next-themes'
 
 interface CouponProps {
     _id : string,
@@ -40,6 +41,7 @@ interface FormValues {
 }
 
 const AddOrUpdateCouponForm = ({products , couponToUpdate}:{products:ProductsProps[],couponToUpdate?:CouponProps}) => {
+    const {theme} = useTheme()
 
 
 //this part is for updating the coupon form based on whether we have an id(Which means we're in update page) or not(we're in add page)
@@ -119,7 +121,7 @@ const AddOrUpdateCouponForm = ({products , couponToUpdate}:{products:ProductsPro
             <label className="mb-2 mr-2 block text-secondary-700"
             >نوع کد تخفیف
              <span className='text-error'>*</span></label>
-           <div className='flex justify-center gap-10 bg-secondary-100/40 items-center w-full border-2 rounded-xl p-2.5'>
+           <div className='flex justify-center gap-10 bg-secondary-200 dark:text-black items-center w-full border-2 rounded-xl p-2.5'>
                 <RadioInput {...register('type')}
                 id='percent-type'
                 name='type'
@@ -148,7 +150,9 @@ const AddOrUpdateCouponForm = ({products , couponToUpdate}:{products:ProductsPro
             <RHFTextField register={register} label='تعداد بار قابل استفاده' name='usageLimit'  isRequired errors={errors}/>
             <DatePicker
             style={{cursor:'pointer' , padding: '25px' , width : '100%' , paddingBottom : '25px' ,
-            marginTop: '35px' , backgroundColor:'#D4D5DD80' , borderRadius : '14px'}}
+            marginTop: '35px' ,
+            backgroundColor: theme === 'dark' ? "#6E709E" : "#E5DFDF" 
+            , borderRadius : '14px'}}
             format="YYYY/MM/DD" calendar={persian}
             locale={persian_fa}
              value={expireDate} onChange={handleDateChange}/>

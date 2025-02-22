@@ -9,11 +9,13 @@ import Link from "next/link"
 import { startTransition, useActionState, useState } from "react"
 import toast from "react-hot-toast"
 import { deleteCategoryHandler } from "@/lib/actions"
+import { useTheme } from "next-themes"
 
 export function UpdateCategory({id}: {id : string | number}) {
+    const {theme} = useTheme()
     return <Link href={`/admin/dashboard/categories/${id}/update`}>
     <ButtonIcon variant="outline">
-        <PencilIcon stroke="blue"/>
+        <PencilIcon stroke={theme === "dark" ? "white" : "blue"}/>
     </ButtonIcon></Link>
 }
 

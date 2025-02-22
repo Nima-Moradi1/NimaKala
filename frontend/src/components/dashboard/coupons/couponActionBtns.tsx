@@ -9,6 +9,7 @@ import Link from "next/link"
 import { startTransition, useActionState, useState } from "react"
 import toast from "react-hot-toast"
 import { deleteCouponHandler } from "@/lib/actions"
+import { useTheme } from "next-themes"
 
 interface CouponProps {
     _id: string;
@@ -21,9 +22,10 @@ const initialState = {
 
 
 export function UpdateCouponBtn({id}: {id : string | number}) {
+    const {theme} = useTheme()
     return <Link href={`/admin/dashboard/coupons/${id}/update`}>
     <ButtonIcon variant="outline">
-        <PencilIcon stroke="blue"/>
+        <PencilIcon stroke={theme === "dark" ? "white" : "blue"}/>
     </ButtonIcon></Link>
 }
 

@@ -45,13 +45,13 @@ const AddToCart = ({product , label = ''}) => {
    {isProductInCart(user , product) ? <ButtonIcon onClick={()=> window.location.href = '/cart'}
     className='w-full py-2 rounded-xl' variant='outline'>
     <ArrowLeftEndOnRectangleIcon />
-    <span className=''
+    <span className='text-primary-800'
     >ادامه سفارش</span>
    </ButtonIcon>
    : 
    <div>
        <ButtonIcon onClick={addToCartHandler}
-       className='w-full py-2 border rounded-xl'>
+       className='w-full py-2 border dark:border-gray-500 rounded-xl'>
    {isAdding ? <SpinnerMini /> : <>
    {label ? <>
     <PlusCircleIcon />

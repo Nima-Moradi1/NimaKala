@@ -84,7 +84,7 @@ const ProductsTable =  ({products}) => {
             <button
               key={page}
               onClick={() => setCurrentPage(page)}
-              className={`p-2 rounded-full flex items-center w-10 justify-center border ${currentPage === page ? "bg-blue-500 text-white" : "bg-gray-200"}`}
+              className={`p-2 rounded-full flex items-center w-10 justify-center border ${currentPage === page ? "bg-blue-500 text-white" : "bg-secondary-200"}`}
             >
               <span>{page}</span>
             </button>

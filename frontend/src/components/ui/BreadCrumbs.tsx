@@ -17,7 +17,7 @@ export default function BreadCrumbs({breadCrumbs}:{breadCrumbs : BreadCrumbsProp
                 {breadCrumbs.map((breadCrumb,index)=> (
                     <li key={breadCrumb.href}
                     aria-current={breadCrumb.active}
-                    className={` flex gap-x-3  ${breadCrumb.active ? 'text-primary-900' : "text-secondary-500" } ` } >
+                    className={` flex gap-x-3  ${breadCrumb.active ? 'text-primary-800 underline' : "text-secondary-550" } ` } >
                       <Link className="hover:underline"
                        href={breadCrumb.href}>
                       {breadCrumb.label}

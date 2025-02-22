@@ -1,6 +1,5 @@
 /** @type {import('tailwindcss').Config} */
 import { fontFamily } from "tailwindcss/defaultTheme";
-
 function withOpacity(variableName) {
   return ({ opacityValue }) => {
     if (opacityValue !== undefined) {
@@ -35,12 +34,14 @@ module.exports = {
           800: withOpacity("--color-secondary-800"),
           700: withOpacity("--color-secondary-700"),
           600: withOpacity("--color-secondary-600"),
+          550: withOpacity("--color-secondary-550"),
           500: withOpacity("--color-secondary-500"),
           400: withOpacity("--color-secondary-400"),
           300: withOpacity("--color-secondary-300"),
           200: withOpacity("--color-secondary-200"),
           100: withOpacity("--color-secondary-100"),
         },
+        formText : withOpacity("--form-text") ,
         success: withOpacity("--color-success"),
         warning: withOpacity("--color-warning"),
         error: withOpacity("--color-error"),
@@ -56,5 +57,6 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+  ],
 };

@@ -3,6 +3,7 @@ import "./globals.css";
 import { Toaster } from "react-hot-toast";
 import QueryClientProvider from "@/providers/QueryClientProvider";
 import vazirFont from "@/constants/localFont";
+import { ThemeProvider } from "@/components/ThemeProvider";
 
 
 
@@ -17,13 +18,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-        <html lang="fa" dir="rtl">
+        <html lang="fa" dir="rtl" suppressHydrationWarning suppressContentEditableWarning>
           <body className={`${vazirFont.variable} font-sans`} suppressHydrationWarning>
           <QueryClientProvider>
         <Toaster />
-          <div>
+        <ThemeProvider
+        attribute="class"
+        defaultTheme="system"
+        enableSystem>
+        <div>
           {children}
           </div>
+        </ThemeProvider>
         </QueryClientProvider>
           </body>
         </html>

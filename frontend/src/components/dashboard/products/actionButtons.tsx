@@ -9,11 +9,13 @@ import Link from "next/link"
 import { startTransition, useActionState, useState } from "react"
 import toast from "react-hot-toast"
 import { deleteProductHandler } from "@/lib/actions"
+import { useTheme } from "next-themes"
 
 export function UpdateProduct({id}: {id : string | number}) {
+    const {theme} = useTheme()
     return <Link href={`/admin/dashboard/products/${id}/update`}>
     <ButtonIcon variant="outline">
-        <PencilIcon stroke="blue"/>
+        <PencilIcon stroke={theme === 'light' ? "blue" : "white"}/>
     </ButtonIcon></Link>
 }
 

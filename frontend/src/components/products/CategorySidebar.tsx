@@ -28,8 +28,8 @@ const CategorySidebar = ({categories}) => {
     }
   return (
     <div>
-     <p className="font-bold mb-4">دسته بندی ها</p>
-        <ul className="space-y-4 grid grid-cols-3 items-end md:items-start md:grid-cols-1 ">
+     <p className="font-bold mb-2">دسته بندی ها</p>
+        <ul className=" grid grid-cols-3 mb-5 items-end md:items-start md:grid-cols-1 ">
           {categories.map((category)=> {
             return (
               <CheckBox key={category._id}

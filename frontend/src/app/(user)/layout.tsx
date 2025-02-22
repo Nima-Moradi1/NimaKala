@@ -15,7 +15,7 @@ export default function RootLayout({
   return (
         <>
          <Header/>
-          <div className="container max-w-screen-xl mx-auto z-50">
+          <div className="container max-w-screen-xl mx-auto z-50" suppressHydrationWarning>
                {children}
           </div>
         </>

@@ -7,6 +7,7 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Drawer from "../ui/Drawer";
 import SideBar from "@/app/(profile)/profile/ـ/SideBar";
 import DashboardSidebar from "./DashboardSidebar";
+import ThemeToggle from "../ui/ThemeToggle";
 
 const DashboardHeader = () => {
     const [isOpenDrawer, setIsOpenDrawer] = useState(false);
@@ -37,10 +38,11 @@ const {user} = data || {}
              }
         </Drawer>
       </div>
-            <nav>
-                <ul className="flex xl:max-w-screen-xl mx-auto my-2 mr-3">
+            <nav className="w-full">
+                <ul className="flex w-full xl:max-w-screen-xl mx-auto my-2 mr-3 justify-between items-cente">
                     {data ? 
-                    <div className="flex flex-col">
+                    <div className="flex justify-between items-center">
+                       <div className="flex flex-col">
                     <li>
                         <h1>
                         <span className="font-bold mx-0.5"
@@ -52,8 +54,13 @@ const {user} = data || {}
                     <span>{toLocalDateShort(data.user?.createdAt)}</span>
                     </p>
                     </div> 
+                    </div>
                     : null
                     }
+                    <div className="ml-10">
+                    <ThemeToggle />
+                    </div>
+                     
                 </ul>
             </nav>
         </header>

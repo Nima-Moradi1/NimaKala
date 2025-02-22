@@ -3,6 +3,7 @@ import ButtonIcon from '@/components/ui/ButtonIcon'
 import { logoutApi } from '@/services/authServices';
 import { ArrowLeftEndOnRectangleIcon, CurrencyDollarIcon, HandThumbUpIcon, HomeIcon, ShoppingBagIcon, UserCircleIcon } from '@heroicons/react/24/outline'
 import classNames from 'classnames';
+import { useTheme } from 'next-themes';
 import Image from 'next/image';
 import Link from 'next/link'
 import { usePathname } from 'next/navigation';
@@ -45,6 +46,7 @@ const sidebarNavs = [
 
 const SideBar = ({onClose , className}: { onClose?: MouseEventHandler<HTMLAnchorElement> , className?:string}) => {
   const pathname = usePathname();
+  const {theme} = useTheme()
 
   const logoutHandler = async () => {
     try {
@@ -59,9 +61,19 @@ const SideBar = ({onClose , className}: { onClose?: MouseEventHandler<HTMLAnchor
   return (
     <ul className={`space-y-2 w-full ${className}`}>
       <li>
+       {theme === "dark" ? 
+       <>
+        <Link href='/'>
+        <Image  src='/nimakala-dark.png' alt='logo' className='-mt-3' width={220} height={20}/>
+        </Link>
+       </> 
+       : 
+       <>
         <Link href='/'>
         <Image  src='/nimakala.png' alt='logo' className='-mt-3' width={220} height={20}/>
         </Link>
+       </>
+       }
       </li>
       {sidebarNavs.map((nav) => {
         return (

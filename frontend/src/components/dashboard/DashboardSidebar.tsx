@@ -6,6 +6,7 @@ import { TagIcon } from '@heroicons/react/24/outline';
 import { UsersIcon } from '@heroicons/react/24/outline';
 import { ArrowLeftEndOnRectangleIcon, CurrencyDollarIcon, HomeIcon, ShoppingBagIcon, UserCircleIcon } from '@heroicons/react/24/outline'
 import classNames from 'classnames';
+import { useTheme } from 'next-themes';
 import Image from 'next/image';
 import Link from 'next/link'
 import { usePathname } from 'next/navigation';
@@ -59,6 +60,7 @@ const sidebarNavs = [
 
 const DashboardSidebar = ({onClose , className}: { onClose?: MouseEventHandler<HTMLAnchorElement> , className?:string}) => {
   const pathname = usePathname();
+  const {theme} = useTheme()
 
   const logoutHandler = async () => {
     try {
@@ -71,12 +73,21 @@ const DashboardSidebar = ({onClose , className}: { onClose?: MouseEventHandler<H
   }
   
   return (
-    <ul className={`space-y-2 ${className}`}>
+    <ul className={`space-y-2 min-h-screen px-2 ${className}`}>
       <li>
+      {theme === "dark" ? 
+       <>
         <Link href='/'>
-        <Image alt='logo' width={150} height={30} priority src='/nimakala.png'
-        className='lg:-mt-3'/>
+        <Image  src='/nimakala-dark.png' alt='logo' className='lg:-mt-6' width={220} height={20}/>
         </Link>
+       </> 
+       : 
+       <>
+        <Link href='/'>
+        <Image  src='/nimakala.png' alt='logo' className='lg:-mt-6' width={220} height={20}/>
+        </Link>
+       </>
+       }
       </li>
       {sidebarNavs.map((nav) => {
         return (
@@ -87,7 +98,7 @@ const DashboardSidebar = ({onClose , className}: { onClose?: MouseEventHandler<H
               className={classNames(
                 "flex items-center gap-x-2 rounded-2xl font-medium hover:text-primary-900 transition-all duration-200 text-secondary-700 py-3 px-4",
                 {
-                  "bg-primary-100/40 !font-bold !text-blue-500":
+                  "bg-primary-100/40 !font-bold !text-primary-800":
                     pathname == nav.href,
                 }
               )}

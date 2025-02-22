@@ -1,14 +1,15 @@
 'use client'
+import { useTheme } from 'next-themes';
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import Select from 'react-select'
 
 
 function CouponSelect({options , onChange , label , value , register , errors}) {
-
+const {theme} = useTheme()
   const customStyles = {
     control: (base: any) => ({
       ...base,
-      backgroundColor: "#D4D5DD80",
+      backgroundColor: theme === 'dark' ? "#6E709E" : "#E5DFDF",
       borderRadius: "15px",
       padding: "8px",
       border: "1px solid #ccc",

@@ -24,7 +24,7 @@ const ProductsPageUser = async ({searchParams}) => {
     <>
     <GreetingModal />
     <div>
-      <div className="md:grid md:grid-cols-4 flex flex-col px-3 m-3">
+      <div className="md:grid md:grid-cols-4 flex flex-col m-3">
        <div className="col-span-1">
        <CategorySidebar categories={categories}/>
        </div>
@@ -50,7 +50,7 @@ const ProductsPageUser = async ({searchParams}) => {
             </div>
             <div className="flex items-start justify-between mb-5">
             <Link
-              className=" text-primary-900 font-bold block"
+              className=" text-primary-800 font-bold block"
               href={`/products/${product.slug}`}
             >
               مشاهده محصول

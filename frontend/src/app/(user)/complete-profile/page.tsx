@@ -30,7 +30,7 @@ const onSubmit = (data:object) => {
 }
     return(
         <>
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center m-3">
             <form className="form"
              onSubmit={handleSubmit(onSubmit)}>
                 <RHFTextField name="name" label="نام کامل" register={register} errors={errors} isRequired />

@@ -38,7 +38,7 @@ if(!user?.cart?.products || user?.cart?.products?.length === 0) {
      <ErrorMsg msg={'سبد خرید شما خالی است'}/>
       <Link
       className="text-xl lg:text-2xl group
-       flex gap-x-4 items-center justify-center font-bold text-primary-900 hover:text-primary-700 transition duration-200"
+       flex gap-x-4 items-center justify-center font-bold text-primary-800 hover:text-primary-700 transition duration-200"
       href='/products'
       >
       <ArrowLeftIcon className="size-5 group-hover:-translate-x-2 transition-all duration-300"/>

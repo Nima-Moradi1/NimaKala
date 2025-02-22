@@ -23,11 +23,11 @@ const GreetingModal = () => {
   return (
     <Modal onClose={handleCloseModal} open={showModal}
      title='به نیماکالا خوش آمدید' description='لطفا متن زیر را ابتدا مطالعه کنید'>
-        <p className='border-b mb-3 pb-2'
+        <p className='border-b mb-3 pb-2 text-black'
         >⚠️ در حال حاضر شما در جایگاه {" "}  
             <span className='font-bold text-error'> مشتری </span> 
             وارد سایت شده اید</p>
-        <p className=''>- در صورتی که {" "} 
+        <p className='text-black'>- در صورتی که {" "} 
             <span className='text-lg font-bold'
             >کارفرما {" "}</span>
              هستید و میخواهید دسترسی به فول پنل ادمین و فیچرهای دیگر سایت داشته باشید لطفا به بنده از طریق پلتفرم های زیر پیام بدهید ❤️ 

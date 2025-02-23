@@ -1,6 +1,5 @@
 import AddToCart from "@/components/products/AddToCart";
 import CategorySidebar from "@/components/products/CategorySidebar";
-import GreetingModal from "@/components/products/GreetingModal";
 import LikeProduct from "@/components/products/LikeProduct";
 import PWAModal from "@/components/PWAModal";
 import { getAllCategoriesApi } from "@/services/categoryServices";
@@ -23,7 +22,6 @@ const ProductsPageUser = async ({searchParams}) => {
   const {categories} = await getAllCategoriesApi()
   return (
     <>
-    <GreetingModal />
     <div>
       <div className="md:grid md:grid-cols-4 flex flex-col m-3">
        <div className="col-span-1">

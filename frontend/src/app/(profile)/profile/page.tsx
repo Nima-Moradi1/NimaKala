@@ -1,4 +1,5 @@
 'use client'
+import GreetingModal from "@/components/products/GreetingModal"
 import LatestPaidProduct from "@/components/profile/LatestPaidProduct"
 import CardWrapper from "@/components/ui/CardWrapper"
 import Fallback from "@/components/ui/Fallback"
@@ -16,6 +17,7 @@ const ProfilePage = () => {
       if(isLoading) return <Fallback />
   return (
     <div>
+          <GreetingModal />
      <h1 className="h2 mb-5">
       آخرین وضعیت شما
      </h1>

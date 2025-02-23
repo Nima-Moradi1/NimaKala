@@ -20,11 +20,11 @@ import { usePathname } from "next/navigation";
       <Link href={href || pathname}>
       <div className="rounded-2xl bg-secondary-50 p-2 shadow-lg border border-secondary-100/50">
         <div className="flex p-4 text-secondary-600">
-          {Icon ? <Icon className="size-6" /> : null}
-          <h3 className="mr-2 text-sm font-medium hover:underline">{title}</h3>
+          {Icon ? <Icon className="size-6" stroke="gray" /> : null}
+          <h3 className="mr-2 text-sm font-medium hover:underline text-secondary-700">{title}</h3>
         </div>
         <p
-          className={`truncate rounded-xl bg-secondary-0 px-4 py-8 text-center text-2xl text-secondary-500`}
+          className={`truncate rounded-xl bg-secondary-0 px-4 py-8 text-center text-2xl text-secondary-700`}
         >
           {value}
         </p>

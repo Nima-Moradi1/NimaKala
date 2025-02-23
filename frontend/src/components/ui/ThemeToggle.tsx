@@ -28,7 +28,7 @@ const ThemeToggle = () => {
             </> :
              <>
         <MoonIcon stroke="white"
-        className="size-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+        className="size-4 transition-all dark:scale-100" />
              </>}
         </Button>
   )

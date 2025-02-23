@@ -2,6 +2,7 @@ import AddToCart from "@/components/products/AddToCart";
 import CategorySidebar from "@/components/products/CategorySidebar";
 import GreetingModal from "@/components/products/GreetingModal";
 import LikeProduct from "@/components/products/LikeProduct";
+import PWAModal from "@/components/PWAModal";
 import { getAllCategoriesApi } from "@/services/categoryServices";
 import { getAllProductsApi } from "@/services/productServices"
 import { toPersianNumbersWithComma } from "@/utils/NumberFormatter";
@@ -65,6 +66,7 @@ const ProductsPageUser = async ({searchParams}) => {
         })}
        </div>
       </div>
+      <PWAModal/>
     </div>
     </>
   )

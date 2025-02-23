@@ -6,6 +6,7 @@ import Dropdown from "./Dropdown"
 import { ShoppingCartIcon } from "@heroicons/react/24/outline"
 import ThemeToggle from "./ui/ThemeToggle"
 import { useTheme } from "next-themes"
+import React from "react"
 
 const Header = () => {
 
@@ -13,7 +14,13 @@ const Header = () => {
     
 const {isLoading , data} = useGetUser()
 const {user} = data || {}
+ const [mounted, setMounted] = React.useState(false);
 
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
     return (
         <>
         <header className={` ${isLoading ? "blur-sm opacity-70" : "opacity-100 blur-0" } bg-inherit mb-10 sticky top-0 transition-all duration-300 backdrop-blur-xl`}>
